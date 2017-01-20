@@ -2,7 +2,7 @@
 
 ### Vagrant 1.9.0 required.
 
-## Vagrant
+## Installation
 
   + Install Virtualbox
     + Make sure to install "host-only network adapter" with it

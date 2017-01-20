@@ -1,0 +1,50 @@
+---
+
+#- name: Set up firewall
+#  shell: systemctl enable firewalld && systemctl start firewalld
+#  become: yes
+
+- name: Update Yum
+  yum: name=* state=latest
+  become: yes
+
+- name: Install base system tools
+  yum: pkg={{ item }} state=installed
+  become: yes
+  with_items:
+     - nano
+     - kernel-devel
+     - vim
+     - unzip
+     - lynx
+     - mlocate
+     - yum-utils
+     - ruby
+     - ruby-devel
+     
+- name: Update ruby
+  shell: gem update --system
+  become: yes
+  
+- name: Install ruby gem json
+  shell: gem install json
+  become: yes
+
+- name: Install gem sass
+  shell: gem install sass
+  become: yes
+
+- name: Install compass
+  shell: gem install compass --pre
+  become: yes
+
+- name: Remove current timezone
+  file: path=/etc/localtime state=absent
+  become: yes
+
+- name: Set timezone
+  become: yes
+  file: path=/etc/localtime
+        src=/usr/share/zoneinfo/Europe/Madrid
+        state=link
+        force=yes

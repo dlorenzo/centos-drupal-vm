@@ -1,0 +1,13 @@
+---
+
+ - hosts: all
+
+   roles:
+    - init
+    - httpd
+    - php56
+    - mysql
+    - drush
+    - pimpmylog
+    - daemonize
+    - mailhog

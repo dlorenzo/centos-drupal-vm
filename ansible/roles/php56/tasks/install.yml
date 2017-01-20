@@ -1,0 +1,46 @@
+---
+
+- name: Install epel from remote repo
+  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present
+  become: yes
+
+- name: Install remi from remote repo
+  yum: name=http://rpms.famillecollet.com/enterprise/remi-release-7.rpm state=present
+  become: yes
+  
+- name: Enable php-56 repo
+  shell: yum-config-manager --enable remi-php56
+  become: yes
+
+- name: upgrade all packages
+  yum: name=* state=latest
+  become: yes
+
+- name: Install php
+  yum: pkg={{ item }} enablerepo=remi,remi-php56 state=present
+  become: yes
+  with_items:
+    - php
+    - php-common
+
+- name: Install php modules
+  yum: pkg={{ item }} enablerepo=remi,remi-php56 state=present
+  become: yes
+  with_items:
+    - php-pecl-apcu
+    - php-cli
+    - php-pear
+    - php-pdo
+    - php-mysqlnd
+    - php-pgsql
+    - php-pecl-mongo
+    - php-sqlite
+    - php-pecl-memcache
+    - php-pecl-memcached
+    - php-gd
+    - php-mbstring
+    - php-mcrypt
+    - php-xml
+    - composer
+  notify:
+  - restart httpd

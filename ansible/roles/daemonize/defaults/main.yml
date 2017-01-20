@@ -1,0 +1,6 @@
+---
+
+workspace: /root
+
+daemonize_version: 1.7.7
+daemonize_install_path: "/usr/local/sbin"

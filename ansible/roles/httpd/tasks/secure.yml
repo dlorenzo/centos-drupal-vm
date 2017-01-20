@@ -1,0 +1,12 @@
+---
+
+- name: Add ports 80, 443 to firewall
+  become: yes
+  shell:  firewall-cmd --permanent --zone=public --add-service=http && \
+    firewall-cmd --zone=public --add-port=80/tcp --permanent && \
+    firewall-cmd --zone=public --add-port=443/tcp --permanent && \
+    firewall-cmd --reload
+
+- name: Flush iptables
+  become: yes
+  shell: iptables -F

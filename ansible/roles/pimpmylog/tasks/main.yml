@@ -1,0 +1,35 @@
+
+---
+- name: get pimpmylog package
+  git:
+    repo: https://github.com/potsky/PimpMyLog.git
+    dest: /var/www/pimpmylog
+    depth: 1
+    version: master
+  become: yes
+
+- name: ensure that the package isn't effected by mode changes
+  command: git config core.filemode false chdir=/var/www/pimpmylog
+  become: yes
+  changed_when: false
+
+- name: add vhost for pimpmylog to sites-available folder
+  template: src=apache_pimpmylog_vhost.j2 dest=/etc/httpd/sites-enabled/pimpmylog.conf
+  become: yes
+  notify:
+    - restart httpd
+
+- name: ensure Pimpmylog directory permissions
+  file: path=/var/www/pimpmylog mode=0777 recurse=yes state=directory
+  become: yes
+  changed_when: false
+
+- name: ensure httpd logs directory permissions
+  file: path=/var/log/httpd mode=705 recurse=no state=directory
+  become: yes
+  changed_when: false
+
+- name: add configuration file
+  copy: src=config.user.php dest=/var/www/pimpmylog/config.user.php
+  become: yes
+

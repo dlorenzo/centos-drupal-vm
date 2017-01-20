@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+Alias /stats/logs /var/www/pimpmylog
+<Directory "/var/www/pimpmylog">                      
+    Order allow,deny
+    Allow from all
+    Require all granted
+</Directory>

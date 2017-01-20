@@ -1,0 +1,31 @@
+---
+
+- name: Change default apache vhost
+  template: src=default.tpl dest=/etc/httpd/conf.d/000-default.conf
+  become: yes
+
+- name: Set global ServerName for apache config
+  lineinfile: dest=/etc/httpd/conf/httpd.conf line="ServerName localhost"
+  become: yes
+
+- name: SELinux to enforcing
+  command: /sbin/setenforce 0
+  become: yes
+  notify:
+    - restart httpd
+
+- name: ensure sites-enabled folder exists
+  file: path=/etc/httpd/sites-enabled state=directory
+  become: yes
+
+- name: add sites-enabled include
+  lineinfile: dest=/etc/httpd/conf/httpd.conf line="IncludeOptional sites-enabled/*.conf"
+  become: yes
+
+- name: fix vboxfs caching issues
+  lineinfile: dest=/etc/httpd/conf/httpd.conf line="EnableSendfile off"
+  become: yes
+
+- name: Ensure Apache running
+  service: name=httpd state=started enabled=yes
+  become: yes

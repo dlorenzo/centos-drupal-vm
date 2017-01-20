@@ -1,0 +1,5 @@
+.vagrant/
+html/*
+!html/adminer.php
+!html/index.php
+!html/phpinfo.php

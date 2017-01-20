@@ -1,0 +1,11 @@
+---
+
+#- name: Add allow rule for 3306 to firewall
+#  firewalld: zone=public port=3306/tcp permanent=true state=enabled
+#  become: yes
+#  notify:
+#  - Restart the MySQL service
+
+- name: Configure MySql
+  become: yes
+  template: src=global.my.cnf.j2 dest=/etc/my.cnf owner=root group=root mode=0644

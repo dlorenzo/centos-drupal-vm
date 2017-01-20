@@ -1,0 +1,7 @@
+---
+
+- name: Install Apache web server
+  yum: pkg={{ item }} state=installed
+  become: yes
+  with_items:
+     - httpd

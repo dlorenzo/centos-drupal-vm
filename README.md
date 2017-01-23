@@ -1,6 +1,6 @@
 # centos-drupal-vm
 
-### Vagrant 1.9.0 required.
+### Recommended Vagrant v1.9.0
 
 ## Installation
 

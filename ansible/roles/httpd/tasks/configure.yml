@@ -1,7 +1,19 @@
 ---
+- name: Copy SSL certificates
+  copy:
+    src: "./certs"
+    dest: /etc/ssl/private
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
 
 - name: Change default apache vhost
   template: src=default.tpl dest=/etc/httpd/conf.d/000-default.conf
+  become: yes
+
+- name: Add SSL vhost
+  template: src=default-ssl.tpl dest=/etc/httpd/conf.d/000-default-ssl.conf
   become: yes
 
 - name: Set global ServerName for apache config

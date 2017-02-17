@@ -5,3 +5,4 @@
   become: yes
   with_items:
      - httpd
+     - mod_ssl

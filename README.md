@@ -2,6 +2,16 @@
 
 ### Recommended Vagrant v1.9.0
 
+## Main features
+
+  + Apache (with SSL support)
+  + PHP 5.6
+  + MariadDB
+  + Mailhog
+  + Pimp My Log
+  + Drush
+  + Adminer
+
 ## Installation
 
   + Install Virtualbox

@@ -1,7 +1,5 @@
 # centos-drupal-vm
 
-### Recommended Vagrant v1.9.0
-
 ## Main features
 
   + Apache (with SSL support)

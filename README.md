@@ -4,7 +4,7 @@
 
   + Apache (with SSL support)
   + PHP 5.6
-  + MariadDB
+  + MariaDB
   + Mailhog
   + Pimp My Log
   + Drush
@@ -17,7 +17,7 @@
   + Install Vagrant
   + Open terminal
   + Run `vagrant plugin install vagrant-vbguest`
-  + Run `vagrant plugin install vagrant-winnfsd`
+  + _Windows:_ Run `vagrant plugin install vagrant-winnfsd`
   + cd to vm root directory
   + Run `vagrant up`
     + If any errors show up, retry with `vagrant reload --provision`
@@ -31,7 +31,7 @@
       + Port: 2222
       + User: vagrant
       + Password: vagrant
-    + MariadDB:
+    + MariaDB:
       + User: root
       + Pass: toor
       + Adminer in http://10.0.0.10/adminer.php

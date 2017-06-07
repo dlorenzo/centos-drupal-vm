@@ -3,7 +3,7 @@ VAGRANTFILE_BOX_NAME = "centos-drupal-vm"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Base config
-  config.vm.box = "enemy-of-the-state/centos-7.1_kernel-devel-fixed"
+  config.vm.box = "centos/7"
   config.vm.hostname = VAGRANTFILE_BOX_NAME
   config.vbguest.auto_update = true
   config.vm.define VAGRANTFILE_BOX_NAME do |plxbox|

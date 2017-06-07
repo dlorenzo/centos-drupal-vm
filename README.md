@@ -3,7 +3,8 @@
 ## Main features
 
   + Apache (with SSL support)
-  + PHP 5.6
+  + PHP 7
+    + Includes optional PHP 5.6 role.
   + MariaDB
   + Mailhog
   + Pimp My Log
@@ -17,7 +18,7 @@
   + Install Vagrant
   + Open terminal
   + Run `vagrant plugin install vagrant-vbguest`
-  + _Windows:_ Run `vagrant plugin install vagrant-winnfsd`
+  + _Windows only:_ Run `vagrant plugin install vagrant-winnfsd`
   + cd to vm root directory
   + Run `vagrant up`
     + If any errors show up, retry with `vagrant reload --provision`

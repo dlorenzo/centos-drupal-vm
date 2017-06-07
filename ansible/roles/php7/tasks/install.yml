@@ -8,8 +8,8 @@
   yum: name=http://rpms.famillecollet.com/enterprise/remi-release-7.rpm state=present
   become: yes
 
-- name: Enable php-56 repo
-  shell: yum-config-manager --enable remi-php56
+- name: Enable php-71 repo
+  shell: yum-config-manager --enable remi-php71
   become: yes
 
 - name: upgrade all packages
@@ -17,14 +17,14 @@
   become: yes
 
 - name: Install php
-  yum: pkg={{ item }} enablerepo=remi,remi-php56 state=present
+  yum: pkg={{ item }} enablerepo=remi,remi-php71 state=present
   become: yes
   with_items:
     - php
     - php-common
 
 - name: Install php modules
-  yum: pkg={{ item }} enablerepo=remi,remi-php56 state=present
+  yum: pkg={{ item }} enablerepo=remi,remi-php71 state=present
   become: yes
   with_items:
     - php-pecl-apcu
@@ -33,8 +33,6 @@
     - php-pdo
     - php-mysqlnd
     - php-pgsql
-    - php-pecl-mongo
-    - php-sqlite
     - php-pecl-memcache
     - php-pecl-memcached
     - php-gd

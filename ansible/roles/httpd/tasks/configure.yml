@@ -20,8 +20,9 @@
   lineinfile: dest=/etc/httpd/conf/httpd.conf line="ServerName localhost"
   become: yes
 
-- name: SELinux to enforcing
-  command: /sbin/setenforce 0
+- name: Disable SELINUX
+  selinux:
+    state: disabled
   become: yes
   notify:
     - restart httpd

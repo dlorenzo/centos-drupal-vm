@@ -5,7 +5,8 @@
    roles:
     - init
     - httpd
-    - php56
+#   - php56
+    - php7
     - mysql
     - drush
     - pimpmylog

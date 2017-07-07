@@ -1,9 +1,10 @@
 VAGRANTFILE_API_VERSION = "2"
 VAGRANTFILE_BOX_NAME = "centos-drupal-vm"
+VAGRANTFILE_BOX = "centos/7"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Base config
-  config.vm.box = "centos/7"
+  config.vm.box = VAGRANTFILE_BOX
   config.vm.hostname = VAGRANTFILE_BOX_NAME
   config.vbguest.auto_update = true
   config.vm.define VAGRANTFILE_BOX_NAME do |plxbox|
@@ -33,7 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   guest_ansible.sudo = false
   # end
 
-  # Virtualbox synced folder
+  # Synced folders
+  config.vm.synced_folder '.', '/vagrant', type: "virtualbox"
   config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
 
   # A private dhcp network is required for NFS to work (on Windows hosts, at least)

@@ -39,6 +39,7 @@
     - php-mbstring
     - php-mcrypt
     - php-xml
+    - php-opcache
     - composer
   notify:
   - restart httpd

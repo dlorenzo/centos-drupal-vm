@@ -21,6 +21,7 @@
      - yum-utils
      - ruby
      - ruby-devel
+     - wget
      
 - name: Update ruby
   shell: gem update --system

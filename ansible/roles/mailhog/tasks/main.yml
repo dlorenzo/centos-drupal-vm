@@ -41,7 +41,7 @@
   become: yes
 
 # Install and configure sSMTP.
-- include: setup.yml
+- import_tasks: setup.yml
   when: mailhog_install_ssmtp
   become: yes
 

@@ -22,6 +22,7 @@
      - ruby
      - ruby-devel
      - wget
+     - git
      
 - name: Update ruby
   shell: gem update --system
@@ -49,3 +50,17 @@
         src=/usr/share/zoneinfo/Europe/Madrid
         state=link
         force=yes
+
+- name: Set sshd config for PasswordAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+    validate: 'sshd -f %s -T'
+  with_items:
+    - { regexp: '^PasswordAuthentication ', line: "PasswordAuthentication yes " }
+
+- name: restart sshd
+  service: name=sshd state=restarted
+  become: yes

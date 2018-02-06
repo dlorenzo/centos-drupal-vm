@@ -23,6 +23,7 @@
      - ruby-devel
      - wget
      - git
+     - cifs-utils
      
 - name: Update ruby
   shell: gem update --system

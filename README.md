@@ -18,7 +18,6 @@
   + Install Vagrant
   + Open terminal
   + Run `vagrant plugin install vagrant-vbguest`
-  + _Windows only:_ Run `vagrant plugin install vagrant-winnfsd`
   + cd to vm root directory
   + Run `vagrant up`
     + If any errors show up, retry with `vagrant reload --provision`

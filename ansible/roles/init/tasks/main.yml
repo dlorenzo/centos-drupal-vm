@@ -23,7 +23,7 @@
      - ruby-devel
      - wget
      - git
-     - autoconf
+     - cifs-utils
      - automake
      - autogen
      - intltool

@@ -1,15 +1,15 @@
 VAGRANTFILE_API_VERSION = "2"
 VAGRANTFILE_BOX_NAME = "centos-drupal-vm"
-VAGRANTFILE_BOX = "centos/7"
+VAGRANTFILE_BOX = "geerlingguy/centos7"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Base config
   config.vm.box = VAGRANTFILE_BOX
   config.vm.hostname = VAGRANTFILE_BOX_NAME
   config.vbguest.auto_update = true
-  config.vm.define VAGRANTFILE_BOX_NAME do |plxbox|
-  config.ssh.insert_key = false
-  end
+  config.ssh.insert_key = false 
+  config.vm.define VAGRANTFILE_BOX_NAME do |devbox|
+  end 
 
   # Port forwarding
   config.vm.network :private_network, ip: "10.0.0.10"
@@ -38,15 +38,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder '.', '/vagrant', type: "virtualbox"
 
   # Sync folder after provisioning only.
-  if File.exist?(".vagrant/machines/YOUR_BOX_ID/virtualbox/action_provision")
     ## Unix
     # config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
     ## Windows
-    config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["file_mode=0666", "dir_mode=0777"]
-  end
-
-  # Trigger reload after provisioning
-  config.trigger.after :provision, :execute => "vagrant reload"
+    config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["uid=48", "gid=48", "file_mode=0666", "dir_mode=0777"]
 
   # A private dhcp network is required for NFS to work (on Windows hosts, at least)
   config.vm.network :private_network, type: "dhcp"

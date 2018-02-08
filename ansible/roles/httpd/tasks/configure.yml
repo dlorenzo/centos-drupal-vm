@@ -42,3 +42,9 @@
 - name: Ensure Apache running
   service: name=httpd state=started enabled=yes
   become: yes
+
+- name: Add apache group to vagrant user
+  user:
+    name: vagrant
+    groups: apache
+    append: yes

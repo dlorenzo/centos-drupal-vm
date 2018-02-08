@@ -2,4 +2,4 @@
 
 # used in apache vhost configuration files
 doc_root: /var/www/html
-hostname: plxbox
+hostname: devbox

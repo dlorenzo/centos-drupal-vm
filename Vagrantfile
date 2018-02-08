@@ -36,10 +36,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Synced folders
   config.vm.synced_folder '.', '/vagrant', type: "virtualbox"
-  ## Unix
-  # config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
-  ## Windows
-   config.vm.synced_folder "./html", "/var/www/html", type: "smb", owner: "apache", group: "apache", mount_options: ["file_mode=0777", "dir_mode=0777"]
+
+  # Sync folder after provisioning only.
+  if File.exist?(".vagrant/machines/YOUR_BOX_ID/virtualbox/action_provision")
+    ## Unix
+    # config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
+    ## Windows
+    config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["file_mode=0777", "dir_mode=0666"]
+  end
+
+  # Trigger reload after provisioning
+  config.trigger.after :provision, :execute => "vagrant reload"
 
   # A private dhcp network is required for NFS to work (on Windows hosts, at least)
   config.vm.network :private_network, type: "dhcp"

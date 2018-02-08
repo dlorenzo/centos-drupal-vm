@@ -6,7 +6,7 @@ sudo rpm -iUvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarc
 echo "Update packages"
 sudo yum -y update
 
-echo "Installing cifs-utils and Ansible"
-sudo yum -y install cifs-utils ansible
+echo "Installing Ansible"
+sudo yum -y install ansible
 
 sudo ansible-playbook -i localhost, /vagrant/ansible/playbook.yml --connection=local

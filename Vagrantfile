@@ -42,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ## Unix
     # config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
     ## Windows
-    config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["file_mode=0777", "dir_mode=0666"]
+    config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["file_mode=0666", "dir_mode=0777"]
   end
 
   # Trigger reload after provisioning

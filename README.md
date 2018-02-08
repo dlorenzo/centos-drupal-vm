@@ -41,3 +41,14 @@
     + Mailhog:
       + Server: localhost
       + Port: 1025
+
+## Notes
+
+As per Vagrant docs:
+
+>On Windows, if a file is not accessed for some period of time, it may disconnect from the 
+>guest and prevent the guest from accessing the SMB-mounted share. To prevent this, the 
+>following command can be used in a superuser shell. Note that you should research if this 
+>is the right option for you.
+>
+>`net config server /autodisconnect:-1`

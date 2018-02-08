@@ -23,6 +23,11 @@
      - ruby-devel
      - wget
      - git
+     - autoconf
+     - automake
+     - autogen
+     - intltool
+     - libtool
      
 - name: Update ruby
   shell: gem update --system

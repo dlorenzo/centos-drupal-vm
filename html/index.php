@@ -166,6 +166,9 @@ $tools = array(
       #bar {
         padding: 22px 10px 0 30px;
       }
+      #bar > div {
+        margin-bottom: 2em;
+      }
 
       /**
        * Projects
@@ -201,6 +204,15 @@ $tools = array(
       ul.icon-list {
         list-style: none;
         font-size: 1.1em;
+      }
+      ul.icon-list ul { 
+        margin-top: 0.2em;
+        margin-bottom: 1em;
+      }
+      ul.icon-list ul li {
+        margin: 0 0 0 24px;
+        color: #a3a3a3;
+        font-size: 0.9em;
       }
       ul.icon-list i.fa {
         color: #a3a3a3;
@@ -248,19 +260,52 @@ $tools = array(
       </header>
       <section id="container">
         <aside id="bar">
-          <h2>Herramientas</h2>
-          <ul id="tool-list"class="icon-list">
-            <?php
-              foreach ($tools as $tool) {
-                print <<<TOOL
-                <li>
-                  <i class="fa fa-{$tool['fa-icon']}"></i>
-                  <a href="{$tool['url']}" class="tool" title="{$tool['title']}">{$tool['name']}</a>
-                </li>
+          <div>
+            <h2>Herramientas</h2>
+            <ul id="tool-list" class="icon-list">
+              <?php
+                foreach ($tools as $tool) {
+                  print <<<TOOL
+                  <li>
+                    <i class="fa fa-{$tool['fa-icon']}"></i>
+                    <a href="{$tool['url']}" class="tool" title="{$tool['title']}">{$tool['name']}</a>
+                  </li>
 TOOL;
-              }
-            ?>
+                }
+              ?>
+            </ul>
+          </div>
+          <div>
+          <h2>Info</h2>
+          <ul class="icon-list">
+            <li>
+              <i class="fa fa-terminal"></i>
+              SSH
+              <ul>
+                <li>Host: 127.0.0.1</li>
+                <li>Puerto: 2222</li>
+                <li>Usuario: vagrant</li>
+                <li>Contraseña: vagrant</li>
+              </ul>
+            </li>
+            <li>
+              <i class="fa fa-database"></i>
+              MariaDB
+              <ul>
+                <li>Usuario: root</li>
+                <li>Contraseña: toor</li>
+              </ul>
+            </li>
+            <li>
+              <i class="fa fa-envelope"></i>
+              Mailhog
+              <ul>
+                <li>Server: localhost</li>
+                <li>Puerto: 1025</li>
+              </ul>
+            </li>
           </ul>
+          </div>
         </aside>
         <div id="projects">
           <h2>Proyectos</h2>

@@ -37,9 +37,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Synced folders
   config.vm.synced_folder '.', '/vagrant', type: "virtualbox"
   # : Unix
-  # config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
-  # : Windows
-  config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["uid=48", "gid=48", "file_mode=0666", "dir_mode=0777", "vers=2.1"]
+  config.vm.synced_folder "./html", "/var/www/html", type: "nfs"
+  # : Windows only
+  # config.vm.synced_folder "./html", "/var/www/html", type: "smb", mount_options: ["uid=48", "gid=48", "file_mode=0666", "dir_mode=0777", "vers=2.1"]
 
   # A private dhcp network is required for NFS to work (on Windows hosts, at least)
   config.vm.network :private_network, type: "dhcp"

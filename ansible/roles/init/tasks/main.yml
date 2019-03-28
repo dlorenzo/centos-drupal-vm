@@ -28,21 +28,21 @@
      - intltool
      - libtool
      
-- name: Update ruby
-  shell: gem update --system
-  become: yes
+#- name: Update ruby
+#  shell: gem update --system
+#  become: yes
   
-- name: Install ruby gem json
-  shell: gem install json
-  become: yes
+#- name: Install ruby gem json
+#  shell: gem install json
+#  become: yes
 
-- name: Install gem sass
-  shell: gem install sass
-  become: yes
+#- name: Install gem sass
+#  shell: gem install sass
+#  become: yes
 
-- name: Install compass
-  shell: gem install compass --pre
-  become: yes
+#- name: Install compass
+#  shell: gem install compass --pre
+#  become: yes
 
 - name: Remove current timezone
   file: path=/etc/localtime state=absent
